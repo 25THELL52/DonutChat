@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="CVMI"
+            type="com.example.donutchat.viewmodel.SignUpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/signup_bg_groupe_6"
+        tools:context=".ui.SignUpActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/signupbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintVertical_bias="0.0">
+
+            <EditText
+                android:id="@+id/passwordsignupedittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailsignupedittext" />
+
+            <EditText
+                android:id="@+id/emailsignupedittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:ems="10"
+                android:hint="email"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/passwordsignupedittext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usernameedittext" />
+
+            <EditText
+                android:id="@+id/usernameedittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:ems="10"
+                android:hint="type in your username"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/emailsignupedittext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/signupwGbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingStart="5sp"
+            android:paddingEnd="5sp"
+            android:background="@drawable/login_with_google_btn_bg"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Sing up with Google"
+            android:textAllCaps="false"
+            android:textColor="#FBFBFB"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signupbtn"
+            app:layout_constraintVertical_bias="0.204" />
+
+        <TextView
+            android:id="@+id/textView3"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="DonutChat"
+            android:textColor="#FAF8F8"
+            android:textSize="35sp"
+            android:textStyle="italic"
+
+
+            app:layout_constraintBottom_toTopOf="@+id/constraint1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.18" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.32" />
+
+        <Button
+            android:id="@+id/signupbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="false"
+            android:background="@drawable/signup_butt_bg"
+            android:text="Sign Up"
+            android:textColor="#FBFBFB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="2sp"
+            android:paddingBottom="2sp"
+            app:layout_constraintTop_toBottomOf="@id/constraint1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
