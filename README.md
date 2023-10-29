@@ -4,6 +4,10 @@
 ### the project contains 4 activities, 4 viewModels and a repository
 ### In order for the app to work you need to have a firebase account and link it to the project and setup both firebase authentication and firebase RealTime Database
 
+
+## Features :
+### MVVM, LiveData, dataBinding, Firebase Authentication, Firebase RealTime Database, RecyclerView, CardView ...
+#
 ### import the following json file into your Firebase project RealTime database :
 
 ```json
@@ -80,7 +84,6 @@
 ```
 
 
-## Features : MVVM, LiveData, dataBinding, Firebase Authentication, Firebase RealTime Database RecyclerView, CardView ...
 
 
 <image src="https://github.com/25THELL52/DonutChat/assets/79938851/36470af1-65af-4222-b921-f68aed497366" width="30%" height="30%"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <image src="https://github.com/25THELL52/DonutChat/assets/79938851/4f4c02f1-9704-4952-8547-6fdeeec05000" width="30%" height="30%">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
