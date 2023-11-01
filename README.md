@@ -86,7 +86,7 @@
 
 
 
-<image src="https://github.com/25THELL52/DonutChat/assets/79938851/36470af1-65af-4222-b921-f68aed497366" width="30%" height="30%"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <image src="https://github.com/25THELL52/DonutChat/assets/79938851/4f4c02f1-9704-4952-8547-6fdeeec05000" width="30%" height="30%">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<image src="https://github.com/25THELL52/DonutChat/assets/79938851/36470af1-65af-4222-b921-f68aed497366" width="30%" height="30%">     <image src="https://github.com/25THELL52/DonutChat/assets/79938851/4f4c02f1-9704-4952-8547-6fdeeec05000" width="30%" height="30%"> 
 <image src="https://github.com/25THELL52/DonutChat/assets/79938851/13d466b7-b964-44f8-b536-b697e7c35114" width="30%" height="30%">   <image src="https://github.com/25THELL52/DonutChat/assets/79938851/da333202-5702-4218-90d3-773ee5ce3182" width="30%" height="30%">
 
 
