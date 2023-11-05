@@ -2,7 +2,7 @@
 
 ### it's a Group-chat application that lets the user sign up, Login, create and join groups of different Topics, and communicate with users that join the same groups
 ### the app conssists of 4 activities, 4 viewModels and a repository
-### In order for the app to work you need to have a firebase account and link it to the project and setup both firebase authentication and firebase RealTime Database
+### In order for the app to work you need to have a firebase account, link it to the project and setup both firebase authentication and firebase RealTime Database
 
 
 ## Features :
