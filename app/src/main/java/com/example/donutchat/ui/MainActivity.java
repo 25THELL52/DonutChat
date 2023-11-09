@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
         loginViewModel.initializeFirebase(this);
         binding.setCVMI(loginViewModel);
 
-        // Default credentials:
-        binding.emailedittext.setText("babe@gmail.com");
-        binding.passwordedittext.setText("hithere");
+        // Your Default email:
+        binding.emailedittext.setText("default@gmail.com");
         //communViewModelimpl.messagefromrepository.setValue(null);
 
 
