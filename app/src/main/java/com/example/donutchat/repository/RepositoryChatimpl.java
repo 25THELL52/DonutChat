@@ -30,9 +30,9 @@ public class RepositoryChatimpl extends ViewModel implements RepositoryChat {
 
     static FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    public static DatabaseReference users;
-    public static DatabaseReference myapp;
-    public static DatabaseReference groups;
+    public  DatabaseReference users;
+    public  DatabaseReference myapp;
+    public  DatabaseReference groups;
 
     public ValueEventListener groupListener;
     public ValueEventListener groupListListener;
@@ -78,6 +78,8 @@ public class RepositoryChatimpl extends ViewModel implements RepositoryChat {
 
     @Override
     public void Login(String email, String password) {
+
+
 
         this.mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -316,6 +318,7 @@ public class RepositoryChatimpl extends ViewModel implements RepositoryChat {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
+                Log.i("message","Current thread: "+ Thread.currentThread());
                 Log.i("messy7", "grouplistListener is created");
                 Log.i("messy7", "insede the groupListlistener");
 
@@ -698,6 +701,8 @@ public class RepositoryChatimpl extends ViewModel implements RepositoryChat {
         });
 
     }
+
+
 
 
 }

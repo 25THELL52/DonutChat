@@ -45,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
         binding.setCVMI(loginViewModel);
 
         // Default credentials:
-        binding.emailedittext.setText("babe@gmail.com");
-        binding.passwordedittext.setText("hithere");
+        binding.emailedittext.setText("default@gmail.com");
         //communViewModelimpl.messagefromrepository.setValue(null);
 
 
