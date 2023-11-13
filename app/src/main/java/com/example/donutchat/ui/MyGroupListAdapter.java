@@ -3,6 +3,7 @@ package com.example.donutchat.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.donutchat.R;
+import com.example.donutchat.model.Group;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +26,7 @@ public class MyGroupListAdapter extends RecyclerView.Adapter<MyGroupListAdapter.
         this.context = context;
     }
 
-    ArrayList<String> groups = new ArrayList<>();
+    ArrayList<Group> groups = new ArrayList<>();
 
 
     @NonNull
@@ -42,11 +44,11 @@ public class MyGroupListAdapter extends RecyclerView.Adapter<MyGroupListAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
 
-        holder.getTextView().setText(groups.get(position));
+        holder.getTextView().setText(groups.get(position).getGroupName());
         holder.itemView.setOnClickListener(view -> {
 
 
-          context.onItemclick(holder.getTextView().getText().toString());
+          context.onItemclick(groups.get(holder.getAbsoluteAdapterPosition()));
 
         });
 
@@ -58,7 +60,7 @@ public class MyGroupListAdapter extends RecyclerView.Adapter<MyGroupListAdapter.
         return groups.size();
     }
 
-    public void setArray(ArrayList<String> aBoolean) {
+    public void setArray(ArrayList<Group> aBoolean) {
         groups= aBoolean;
     }
 

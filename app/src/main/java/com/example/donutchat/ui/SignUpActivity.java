@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.donutchat.R;
 import com.example.donutchat.databinding.ActivitySignUpBinding;
-import com.example.donutchat.viewmodel.CommunViewModelimpl;
 import com.example.donutchat.viewmodel.SignUpViewModel;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -48,16 +47,14 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean.equals(true)) {
-                    //Toast.makeText(SignUpActivity.this, "Sign up was successful", Toast.LENGTH_LONG).show();
                     signUpViewModel.clearInfo();
                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
-                //else { Log.i("messi","changed from false to false detected");}
             }
         });
 
-        signUpViewModel.messageFromViewmmodel.observe(this, new Observer<String>() {
+        signUpViewModel.messageFromViewModel.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(SignUpActivity.this, s, Toast.LENGTH_LONG).show();
@@ -119,53 +116,5 @@ public class SignUpActivity extends AppCompatActivity {
         //}
     }
     }
-/*
-        public void testfirebase(String username, CallBackinterfaceImpl myCallback){
 
-
-                // checks is a user already exists
-                Log.i("mess", "checkUser entered");
-            Log.i("mess", myCallback.toString());
-
-            FirebaseApp.initializeApp(this);
-                Query user = FirebaseDatabase.getInstance().getReference().child("Users");
-                user.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        if (snapshot.hasChildren()) {
-                            Log.i("messi", "got into onDataChange");
-                            myCallback.setData(Boolean.TRUE);
-                            Iterator<DataSnapshot> iterator = snapshot.getChildren().iterator();
-                            while(iterator.hasNext()) {
-                                Log.i("messi", "got into while loop");
-
-                                if (iterator.next().getKey().equals(username)) {
-                                    myCallback.setData(Boolean.FALSE);
-                                    break;
-
-                                }
-                            }
-
-                            Log.i("messi","myCallback.getData()"+ myCallback.getData().booleanValue());
-                            if(myCallback.getData()){        FirebaseDatabase.getInstance().getReference().child("Users").child(username).setValue("email");
-                                 }
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        Log.i("messi", "database error");
-
-                    }
-                });
-
-                Log.i("messi", "checkUser left ");
-
-
-            }
-
-
- */
     }

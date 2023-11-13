@@ -1,6 +1,5 @@
 package com.example.donutchat.viewmodel;
 
-import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
@@ -10,22 +9,27 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
-import com.example.donutchat.repository.RepositoryChatimpl;
+import com.example.donutchat.model.Group;
+import com.example.donutchat.repository.RepositoryChatImpl;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 
 public class GroupViewModel extends ViewModel implements LifecycleObserver {
 
 
-    RepositoryChatimpl repositoryChatimpl;
-    MutableLiveData<String> currentGroup = new MutableLiveData<>(null);
-    MutableLiveData<ArrayList<String>> messages;
+    RepositoryChatImpl repositoryChatimpl;
+    MutableLiveData<Group> currentGroup = new MutableLiveData<>(null);
+
+    private MutableLiveData<ArrayList<String>> messages;
+    public LiveData<ArrayList<String>> _messages ;
 
     MutableLiveData<String> currentUsername;
 
     public GroupViewModel(){
-        repositoryChatimpl = RepositoryChatimpl.getRepositoryChatimpl();
+        repositoryChatimpl = RepositoryChatImpl.getRepositoryChatImpl();
         messages = repositoryChatimpl.Messages;
+        _messages = getMessages();
         currentUsername = repositoryChatimpl.currentUsername;
 
     }
@@ -54,12 +58,10 @@ public class GroupViewModel extends ViewModel implements LifecycleObserver {
 
 
     public LiveData<ArrayList<String>> getMessages() {
-        //messages= repositoryChatimpl.Messages;
         return messages;
     }
 
     public void loadMessages() {
-        Log.i("messy", "currentgroup.getValue" + currentGroup.getValue());
         repositoryChatimpl.loadMessages(currentGroup.getValue());
 
     }
@@ -69,7 +71,7 @@ public class GroupViewModel extends ViewModel implements LifecycleObserver {
     }
 
 
-    public void setCurrentgroup(MutableLiveData<String> currentgroup) {
+    public void setCurrentgroup(MutableLiveData<Group> currentgroup) {
         this.currentGroup = currentgroup;
     }
 
@@ -79,28 +81,30 @@ public class GroupViewModel extends ViewModel implements LifecycleObserver {
         return currentUsername;
     }
 
-    public LiveData<String> getCurrentgroup() {
+    public LiveData<Group> getCurrentgroup() {
         return currentGroup;
     }
 
     public void clearInfo() {
 
-        repositoryChatimpl.isGroupDataLoaded = false;
         repositoryChatimpl.isMessagesDataLoaded = false;
         currentGroup.setValue(null);
 
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
 
     private void handleListeners() {
 
         if (repositoryChatimpl.groupListener != null) {
             if (currentGroup.getValue() != null) {
-                repositoryChatimpl.groups.child(currentGroup.getValue()).orderByKey().equalTo("messages").removeEventListener(repositoryChatimpl.groupListener);
-                Log.i("messy2", "listener groupListener removed");
+
+
+                repositoryChatimpl.groups.child(String.valueOf(currentGroup.getValue().getGroupID())).orderByKey().equalTo("messages").removeEventListener(repositoryChatimpl.groupListener);
+                Log.i("myMessage", "listener groupListener removed");
             }
         }
+        repositoryChatimpl.isMessagesDataLoaded = false;
 
 
     }

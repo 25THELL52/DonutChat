@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.donutchat.R;
 import com.example.donutchat.databinding.ActivityGroupListBinding;
-import com.example.donutchat.viewmodel.CommunViewModelimpl;
+import com.example.donutchat.model.Group;
 import com.example.donutchat.viewmodel.GroupListViewModel;
 
 import java.util.ArrayList;
@@ -39,8 +39,7 @@ public class GroupListActivity extends AppCompatActivity {
         getLifecycle().addObserver(groupListViewModel);
         groupListViewModel.initializeFirebase();
 
-        groupListViewModel.loadGroups();
-        //groups =;
+        //load groups ;
         binding.setLifecycleOwner(this);
 
         binding.createbtn.setOnClickListener(view -> {
@@ -52,17 +51,18 @@ public class GroupListActivity extends AppCompatActivity {
 
         });
 
-        groupListViewModel.getGroups().observe(this, new Observer<ArrayList<String>>() {
+
+
+        groupListViewModel._groups.observe(this, new Observer<ArrayList<Group>>() {
             @Override
-            public void onChanged(ArrayList<String> aBoolean) {
-                if (aBoolean.size() > 0) {
-                    Log.i("messy", "aBoolean.get(0)" + aBoolean.get(aBoolean.size() - 1));
-                }
+            public void onChanged(ArrayList<Group> aBoolean) {
+
                 myGroupListAdapter.setArray(aBoolean);
 
-                myGroupListAdapter.notifyDataSetChanged();
                 //notify groupListAdapter
+                myGroupListAdapter.notifyDataSetChanged();
             }
+
 
             ;
 
@@ -92,15 +92,46 @@ public class GroupListActivity extends AppCompatActivity {
 
     }
 
-    public void onItemclick(String groupename) {
+
+
+
+
+
+
+    public void onItemclick(Group group) {
         Intent intent = new Intent(this, GroupActivity.class);
-        intent.putExtra("groupname", groupename);
+        intent.putExtra("groupname", group.getGroupName());
+        intent.putExtra("groupId",group.getGroupID());
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        groupListViewModel.loadGroups();
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //communViewModelimpl.clearJoiner();
+        Log.i("myMessage", "GroupListActivity Destroyed");
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("myMessage", "GroupListActivity Stopped");
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("myMessage", "GroupListActivity Paused");
+
+    }
+
+
 }

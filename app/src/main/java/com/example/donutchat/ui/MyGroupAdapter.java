@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHolder> {
     private final MyView myView;
-    ArrayList<String> messages;
+    ArrayList<String> messages = new ArrayList<>();
 
     LinearLayout messageLinearLayout;
 
@@ -84,15 +84,14 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHo
 
     public boolean checkIfItIsCurrentuserMessage(int position) {
         String currentUser = myView.getCurrentuser();
-        if (messages.get(position).substring(0, currentUser.length()).equals(currentUser)) {
-
-
-            return true;
-        } else {
-
-            return false;
-        }
-
+        boolean isCurrentUserMessage = false ;
+        if(!messages.isEmpty()) {
+            if(currentUser!=null) {
+                if (messages.get(position) != null) {
+                    isCurrentUserMessage = messages.get(position).startsWith(currentUser);
+                }
+            }      }
+        return  isCurrentUserMessage;
     }
 
     public boolean changeMessageLinearLayoutGravity(int position, MyViewHolder holder) {
@@ -105,36 +104,25 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHo
 
         if (checkIfItIsCurrentuserMessage(position)) {
 
-            messageLinearLayout.setGravity(Gravity.RIGHT);
+            messageLinearLayout.setGravity(Gravity.END);
             holder.textView.setBackgroundResource(R.drawable.message_bg);
             currentMessage = true;
             isChangedToRight = true;
 
         } else {
 
-            messageLinearLayout.setGravity(Gravity.LEFT);
+            messageLinearLayout.setGravity(Gravity.START);
             holder.textView.setBackgroundResource(R.drawable.not_currentuser_message_bg);
 
             isChangedToRight = false;
             currentMessage = false;
 
         }
-/*
-        if (currentMessage != previousMessage) {
-            params.setMargins(12, 100, 12, 0); //substitute parameters for left, top, right, bottom
-
-            holder.textView.setLayoutParams(params);
-        } else {
-            params.setMargins(12, 0, 12, 0); //substitute parameters for left, top, right, bottom
-
-            holder.textView.setLayoutParams(params);
-        }
-        Log.i("messy", "previousMessage" + previousMessage);
-        Log.i("messy", "currentMessage" + currentMessage);
 
 
 
- */
+
+
         return isChangedToRight;
     }
 

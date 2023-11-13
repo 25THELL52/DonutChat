@@ -1,29 +1,28 @@
 package com.example.donutchat.viewmodel;
 
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.donutchat.repository.RepositoryChatimpl;
+import com.example.donutchat.repository.RepositoryChatImpl;
 
 public class SignUpViewModel extends ViewModel implements LifecycleObserver {
 
 
     public MutableLiveData<Boolean> isSignedUp;
 
-    public MutableLiveData<Boolean> getIssignedUp() {
+    public MutableLiveData<Boolean> getIsSignedUp() {
         return isSignedUp;
     }
 
-    public MutableLiveData<String> messageFromViewmmodel = new MutableLiveData<>();
+    public MutableLiveData<String> messageFromViewModel = new MutableLiveData<>();
     public MutableLiveData<String> messageFromRepository;
 
-    RepositoryChatimpl repositoryChatimpl;
+    RepositoryChatImpl repositoryChatimpl;
 
     public SignUpViewModel(){
 
-        repositoryChatimpl = RepositoryChatimpl.getRepositoryChatimpl();
+        repositoryChatimpl = RepositoryChatImpl.getRepositoryChatImpl();
         messageFromRepository = repositoryChatimpl.messageFromRepo;
         isSignedUp = repositoryChatimpl.isSignedUpFromRepo;
 
@@ -33,10 +32,6 @@ public class SignUpViewModel extends ViewModel implements LifecycleObserver {
     public void onSignUpClicked(String email, String password, String username) {
 
         repositoryChatimpl.SignUp(username, email, password);
-
-
-        //else {error.setValue("already chosen username, get creative !");}
-        //send intent to MainActivity or toast an error
 
     }
 

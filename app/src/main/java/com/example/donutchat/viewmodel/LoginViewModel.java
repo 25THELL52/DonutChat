@@ -9,20 +9,20 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
-import com.example.donutchat.repository.RepositoryChatimpl;
+import com.example.donutchat.repository.RepositoryChatImpl;
 
 public class LoginViewModel extends ViewModel implements LifecycleObserver {
 
     public MutableLiveData<Boolean> isLoggedIn = new MutableLiveData<>(Boolean.FALSE);
-    public MutableLiveData<Boolean> getIsloggedIn() {
+    public MutableLiveData<Boolean> getIsLoggedIn() {
         return isLoggedIn;
     }
-    RepositoryChatimpl repositoryChatimpl;
+    RepositoryChatImpl repositoryChatimpl;
     public MutableLiveData<String> messageFromRepository;
 
     public LoginViewModel(){
 
-        repositoryChatimpl = RepositoryChatimpl.getRepositoryChatimpl();
+        repositoryChatimpl = RepositoryChatImpl.getRepositoryChatImpl();
         isLoggedIn = repositoryChatimpl.isLoggedInFromRepo;
         messageFromRepository = repositoryChatimpl.messageFromRepo;
 
@@ -34,18 +34,14 @@ public class LoginViewModel extends ViewModel implements LifecycleObserver {
     }
 
     public void onLoginClicked(String email, String password) {
-        // update currentusername
-        //send intent to GroupListActivity or toast an error
-        //repositoryChatimpl.Login(email, password).getValue();
+
         repositoryChatimpl.Login(email, password);
     }
     public void onLogInWithGoogleClicked() {
         repositoryChatimpl.logInWithGoogle();
     }
 
-    public void onSignUpHereClicked() {
-        //send intent to SignUpActivity or toast an error
-    }
+
 
     public void clearInfo() {
 
@@ -61,7 +57,7 @@ public class LoginViewModel extends ViewModel implements LifecycleObserver {
         if (repositoryChatimpl.loginListener != null) {
 
             repositoryChatimpl.myapp.child("users").removeEventListener(repositoryChatimpl.loginListener);
-            Log.i("messy2", "listener loginListener removed");
+            Log.i("myMessage", "listener loginListener removed");
         }
 
     }

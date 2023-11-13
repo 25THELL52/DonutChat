@@ -5,25 +5,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.style.UnderlineSpan;
-import android.util.Log;
 import android.util.Patterns;
 import android.widget.Toast;
 
 import com.example.donutchat.R;
 import com.example.donutchat.databinding.ActivityMainBinding;
-import com.example.donutchat.viewmodel.CommunViewModel;
-import com.example.donutchat.viewmodel.CommunViewModelimpl;
 import com.example.donutchat.viewmodel.LoginViewModel;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         loginViewModel.initializeFirebase(this);
         binding.setCVMI(loginViewModel);
 
-        // Default credentials:
-        binding.emailedittext.setText("default@gmail.com");
-        //communViewModelimpl.messagefromrepository.setValue(null);
+        // Your Default email:
+        binding.emailedittext.setText("testing@gmail.com");
+
 
 
         getLifecycle().addObserver(loginViewModel);
